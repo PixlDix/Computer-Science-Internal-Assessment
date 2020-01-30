@@ -1,0 +1,19 @@
+{
+  "name": "computer-science-internal-assessment",
+  "version": "1.0.0",
+  "description": "My Computer Science IA",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PixlDix/Computer-Science-Internal-Assessment.git"
+  },
+  "author": "PixlDix",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/PixlDix/Computer-Science-Internal-Assessment/issues"
+  },
+  "homepage": "https://github.com/PixlDix/Computer-Science-Internal-Assessment#readme"
+}
