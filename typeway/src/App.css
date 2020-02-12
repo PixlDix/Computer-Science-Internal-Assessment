@@ -2,9 +2,6 @@ body {
     padding: 0;
     margin: 0;
     background: #e9fbff;
-    /*
-    background-image: linear-gradient(to top, rgba(0, 0, 0, 0.5), rgba(219,252,255,1));
-    */
 }
 
 #welcomeText {
@@ -57,11 +54,16 @@ body {
   border: none;
   color: white;
   padding: 35px 35px;
-  font-size: 34px;
+  font-size: 40px;
   text-align: center;
   list-style-type: none;
   animation: fadeIn 2s 1 3s both;
   cursor:'pointer';
+}
+
+.logInScreenButton a {
+  text-decoration: none;
+  color: white;
 }
 
 .logInScreenButton:hover {
@@ -89,12 +91,16 @@ body {
   width: 350px;
   background-color: #ff3e3b;
   border: none;
-  color: white;
   padding: 35px 35px;
-  font-size: 34px;
+  font-size: 45px;
   text-align: center;
   list-style-type: none;
   cursor:'pointer';
+}
+
+.optionScreenButton a  {
+  text-decoration: none;
+  color: white;
 }
 
 .optionScreenButton:hover {
@@ -115,5 +121,20 @@ body {
   text-shadow: 0px 0px 20px #000000;
   margin: 0;
   padding: 0;
+  text-align: center;
+}
+
+#typingTestHelpText {
+  text-align: center;
+  font-size: 30px;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+#inputBar {
+  text-align: center;
+}
+
+#statsNthat {
   text-align: center;
 }

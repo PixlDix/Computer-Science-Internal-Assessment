@@ -1,10 +1,14 @@
 import React from "react";
 import './App.css';
-import { Link, NavLink } from "react-router-dom"
+import { NavLink } from "react-router-dom"
 
 const options_screen = () => {
     return(
-        <div>
+        <div> 
+            <div>
+                <li><NavLink to="/">Log Out</NavLink></li>
+            </div>
+
             <div>
                 <h1 id='optionsText'>Please select what you would like to do.</h1>
             </div>
