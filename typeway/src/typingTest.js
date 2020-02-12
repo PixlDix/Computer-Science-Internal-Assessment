@@ -41,7 +41,7 @@ const typingTest = () => {
             </div>
             
             <div id='typingTestHelpText'>
-                <h1>Timer starts when you start.</h1>
+                <h1>Timer starts when you start typing.</h1>
             </div>
 
             <div id='statsNthat'>
