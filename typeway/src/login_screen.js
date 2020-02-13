@@ -16,7 +16,7 @@ const login_screen = () => {
 
             <div id="buttons">
                 <div id="logIn">
-                    <li className="logInScreenButton"><NavLink to="/options_screen">Log in/Sign Up</NavLink></li>
+                    <li className="logInScreenButton"><NavLink to="/signinform">Log in/Sign Up</NavLink></li>
                 </div>
 
                 <div id="guest">

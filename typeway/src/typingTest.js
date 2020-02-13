@@ -1,18 +1,12 @@
-import React from 'react';
+import React, { Component } from 'react';
 import './App.css'
-// import { BrowserRouter, Route } from 'react-router-dom';
+import Timer from './Timer';
 import { NavLink } from "react-router-dom";
 
-const typingTest = () => {
-    
 
-    const displaywords = (e) =>{
-        e.preventDefault();
-        const shuffledWords=shuffle(wordList);
-        document.getElementById('typingTestHelpText').innerHTML = shuffledWords.join(' ');
-    }
+class typingTest extends Component {
 
-    function shuffle(a) {
+    shuffle(a) {
         for (let i=0; i<a.length; i++) {
             const j = Math.floor(Math.random() * a.length);
             [a[i], a[j]] = [a[j], a[i]];
@@ -20,7 +14,7 @@ const typingTest = () => {
         return a;
     }
 
-    const wordList = [
+    wordList = [
         "later","danger","habit","special","joy","hung","tube","whispered","chance","harbor","rear","produce","rubber","composition","cutting","bad","though","plan","stand","whom","noun","under","afternoon","follow","powerful","door","loud","stage","roar","electricity","operation","zoo","to","highest","fox","simply","whose","sunlight","sand","balance","crowd","method","step","whale","quickly","clock","green",
         "many","describe","blanket","winter","melted","soil","quite","low","chain","beyond","summer","old","design","rule","establish","answer","surface","state","hay","wore","root","thou","neighbor","earlier","official","manner","except","pressure","have","master","season","universe","screen","develop","tribe","source","consider","tales","arm","easier","should","president","jump","strike","easier","pick","doing",
         "jet","model","where","deeply","wash","story","answer","vast","thick","broken","married","mental","nearest","percent","statement","troops","gas","very","scared","might","essential","even","nuts","occasionally","direct","care","prize","effect","smaller","snake","break","state","numeral","river","identity","depth","compass","family","solve","especially","steep","know","duck","stared","division","stranger","visit",
@@ -34,30 +28,45 @@ const typingTest = () => {
         "happy","world","has","way","describe","success","perfectly","huge","setting","choice","paragraph","wave","answer","sheet","taste","star","scared","baby","twelve","however","consider","pan","angle","fruit","rocket","ship","usual","writing","fog","row","sentence","almost","machine","low","purpose","terrible","citizen","brother","agree","sing","station","point","nest","please","cast","massage","hit"
     ];
 
-    return(
-        <div>
-            <div id='logOutButton'>
-                <li><NavLink to="/">Log Out</NavLink></li>
-            </div>
-            
-            <div id='typingTestHelpText'>
-                <h1>Timer starts when you start typing.</h1>
-            </div>
+    displaywords = (e) =>{
+        e.preventDefault();
+        const shuffledWords=this.shuffle(this.wordList);
+        document.getElementById('typingTestHelpText').innerHTML = shuffledWords.join(' ');
+    }
 
-            <div id='statsNthat'>
-                <h2>WPM: CPM: Accuracy:</h2>
-            </div>
+    startTyping = (e) => {
+        e.preventDefault();
+        
+    }
 
-            <div id='inputBar'>
-                <input placeholder='Begin typing' onClick={displaywords}></input>
-            </div>
+    render(){
+        return(
+            <div>
+                <div id='logOutButton'>
+                    <li><NavLink to="/">Log Out</NavLink></li>
+                </div>
+                
+                <div id='typingTestHelpText'>
+                    <h1>Timer starts when you start typing.</h1>
+                </div>
 
-            <div id='tempResultsButton'>
-                <li><NavLink to="/results_screen">Skip to results</NavLink></li>
+                <div id='statsNthat'>
+                    <h2>WPM: 0 CPM: 0 Accuracy: 0%</h2>
+                </div>
+
+                <Timer />
+
+                <div id='inputBar'>
+                    <input placeholder='Begin typing' onClick={this.displaywords} onChange={this.startTyping}></input>
+                </div>
+
+                <div id='tempResultsButton'>
+                    <li><NavLink to="/results_screen">Skip to results</NavLink></li>
+                </div>
+                
             </div>
-            
-        </div>
-    );
+        );
+    }
 }
 
 export default typingTest;
