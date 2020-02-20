@@ -1,27 +1,48 @@
 import React, { Component } from "react";
 import './App.css';
+import { Redirect } from "react-router-dom";
 
 class Timer extends Component {
     state={
-        count: 60
+        count: 10,
+        redirect: null
     }
+
+    myInterval = null;
+    
     render() {
-        const {count} = this.state
         return(
             <div>
                 <div id='statsNthat'>
-                    <h3>Time left: {count}</h3>
+                    <h3>Time left: {this.state.count}</h3>
                 </div>
+                
+                {this.state.redirect}
             </div>
-
         );
     }
+
     componentDidMount(){
+        const { correctLetters, incorrectLetters, totalLetters, totalWords } = this.props;
         this.myInterval = setInterval(() => {
-            this.setState({
-                count: this.state.count - 1
-            })
-        }, 1000)
+            if(this.state.count === 0) {
+                clearInterval(this.myInterval);
+                this.myInterval = null;
+                this.setState({
+                    redirect: <Redirect to={{pathname: './Results_screen', correctLetters: correctLetters, incorrectLetters: incorrectLetters, totalLetters: totalLetters, totalWords: totalWords}} />
+                });
+            } else {
+                this.setState({
+                    count: this.state.count - 1
+                })
+            }
+        }, 1000);
+    }
+
+    componentWillUnmount(){
+        if(this.myInterval !== null){
+            clearInterval(this.myInterval);
+        }
     }
 }
 

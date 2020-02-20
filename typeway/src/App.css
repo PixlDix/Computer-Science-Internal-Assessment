@@ -126,7 +126,7 @@ body {
 
 #typingTestHelpText {
   text-align: center;
-  font-size: 30px;
+  font-size: 20px;
   overflow: hidden;
   white-space: nowrap;
 }
@@ -137,5 +137,34 @@ body {
 
 #statsNthat {
   text-align: center;
-  font-size: 20px;
+  font-size: 15px;
+}
+
+#textbutton {
+  display:flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.letterneutral {
+  font-size: 35px;
+  padding: 1px;
+}
+
+.current {
+  font-size: 35px;
+  padding: 1px;
+  background-color: lightyellow;
+}
+
+.correct {
+  font-size: 35px;
+  padding: 1px;
+  background-color: lightgreen;
+}
+
+.incorrect {
+  font-size: 35px;
+  padding: 1px;
+  background-color: pink;
 }

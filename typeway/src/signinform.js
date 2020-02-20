@@ -3,14 +3,20 @@ import { NavLink } from "react-router-dom";
 
 
 class signinform extends Component {
+    state = {
+        email: '',
+        password: ''
+    }
 
     logContents = (e) => {
-        console.log(e.target.value);
+        this.setState({
+            [e.target.id]:e.target.value
+        });
     }
 
     logIn = (e) => {
         e.preventDefault();
-        console.log('logged in');
+        console.log(this.state);
     }
 
     render() {
@@ -25,7 +31,7 @@ class signinform extends Component {
                 </div>
 
                 <div>
-                    <input id='email' placeholder='Email' onChange={this.logContents}></input>
+                    <input id='email' type='email' placeholder='Email' onChange={this.logContents}></input>
                 </div>
 
                 <div>

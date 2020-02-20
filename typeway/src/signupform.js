@@ -3,14 +3,20 @@ import { NavLink } from "react-router-dom";
 
 
 class signupform extends Component {
-    
-    logContents = (e) => {
-        console.log(e.target.value);
+    state = {
+        email: '',
+        password: ''
     }
-    
-    signUp = (e) =>{
+
+    logContents = (e) => {
+        this.setState({
+            [e.target.id]:e.target.value
+        });
+    }
+
+    signUp = (e) => {
         e.preventDefault();
-        console.log('account created');
+        console.log(this.state);
     }
    
     render() {
@@ -25,7 +31,7 @@ class signupform extends Component {
                 </div>
 
                 <div>
-                    <input id='email' placeholder='Email' onChange={this.logContents}></input>
+                    <input id='email' type='email' placeholder='Email' onChange={this.logContents}></input>
                 </div>
 
                 <div>

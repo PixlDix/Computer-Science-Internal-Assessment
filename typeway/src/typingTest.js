@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import './App.css'
-import Timer from './Timer';
 import { NavLink } from "react-router-dom";
-
+import TypeManager from './TypeManager';
 
 class typingTest extends Component {
 
@@ -12,31 +11,36 @@ class typingTest extends Component {
             [a[i], a[j]] = [a[j], a[i]];
         };
         return a;
-    }
+    }    
 
-    wordList = [
-        "later","danger","habit","special","joy","hung","tube","whispered","chance","harbor","rear","produce","rubber","composition","cutting","bad","though","plan","stand","whom","noun","under","afternoon","follow","powerful","door","loud","stage","roar","electricity","operation","zoo","to","highest","fox","simply","whose","sunlight","sand","balance","crowd","method","step","whale","quickly","clock","green",
-        "many","describe","blanket","winter","melted","soil","quite","low","chain","beyond","summer","old","design","rule","establish","answer","surface","state","hay","wore","root","thou","neighbor","earlier","official","manner","except","pressure","have","master","season","universe","screen","develop","tribe","source","consider","tales","arm","easier","should","president","jump","strike","easier","pick","doing",
-        "jet","model","where","deeply","wash","story","answer","vast","thick","broken","married","mental","nearest","percent","statement","troops","gas","very","scared","might","essential","even","nuts","occasionally","direct","care","prize","effect","smaller","snake","break","state","numeral","river","identity","depth","compass","family","solve","especially","steep","know","duck","stared","division","stranger","visit",
-        "nearest","so","perfectly","income","week","into","lose","box","vessels","remain","second","equally","riding","noun","chamber","poor","may","hold","green","setting","score","coal","duck","rocket","silk","mail","path","wind","quarter","freedom","nest","explain","mail","cross","taught","silent","clock","count","father","nuts","gun","shaking","contain","street","cast","yes","fed",
-        "change","twice","hollow","safe","ride","garden","sold","actually","detail","along","peace","specific","eventually","chief","little","scale","everything","activity","clothing","football","grow","belong","skill","front","choose","society","week","wrapped","man","safe","hung","rain","guard","kept","treated","silent","point","slight","represent","floor","community","key","everywhere","organized","hardly","settlers","company",
-        "frozen","over","movie","exercise","turn","trade","such","spite","lady","upward","drove","two","primitive","square","won","respect","location","dropped","being","slave","seat","strange","gate","saved","completely","onlinetools","factory","journey","aside","barn","carbon","letter","group","length","same","cool","threw","vessels","parts","song","voice","group","lost","enjoy","differ","wash","strong",
-        "owner","listen","deer","circus","captain","future","anyway","bank","pile","larger","business","spring","leather","map","shape","tried","written","table","crew","combine","pain","poet","lake","grew","liquid","remove","noon","station","obtain","cent","first","decide","ship","shut","tonight","lay","person","short","pink","form","vertical","path","thousand","yellow","rear","window","increase",
-        "poetry","kept","many","powder","nature","surface","symbol","straw","neighbor","realize","death","serious","rose","exclaimed","busy","fine","settle","dirty","gray","depend","are","missing","elephant","meant","natural","worker","increase","practice","town","made","typical","hide","here","lower","market","electric","motion","beauty","stepped","floor","asleep","difference","west","horn","apart","crowd","orbit",
-        "camera","map","circus","broad","no","involved","diameter","enjoy","excited","by","shirt","single","vapor","entire","music","impossible","mental","song","better","already","in","deal","sold","settlers","light","why","service","general","percent","simply","refused","baby","father","again","shoe","food","season","hour","declared","properly","want","flat","soldier","protection","fight","mountain","manufacturing",
-        "this","mad","wide","firm","water","service","lose","broad","dead","remember","primitive","attached","each","uncle","slight","law","beauty","for","hit","amount","easier","information","raw","above","dawn","could","score","these","meant","cake","favorite","sound","settlers","farther","mostly","captured","older","difference","swimming","call","begun","trick","driven","noise","refused","pale","village",
-        "happy","world","has","way","describe","success","perfectly","huge","setting","choice","paragraph","wave","answer","sheet","taste","star","scared","baby","twelve","however","consider","pan","angle","fruit","rocket","ship","usual","writing","fog","row","sentence","almost","machine","low","purpose","terrible","citizen","brother","agree","sing","station","point","nest","please","cast","massage","hit"
+	wordList = [
+        "section","provide","green","machine","tree","plastic","smell","in","radio","if",
+        "few","soldier","unit","physical","possible","distant","youth","jungle","stick","seed",
+        "became","oldest","log","detail","subject","interest","getting","order","feed","cookies",
+        "purple","page","chest","bell","parallel","fine","walk","pain","father","occasionally",
+        "plastic","in","naturally","income","addition","neck","layers","college","information","anyone",
+        "discovery","hall","one","threw","daily","gone","nine","to","storm","available",
+        "tin","distance","pound","type","valley","egg","will","slightly","mixture","star",
+        "forget","walk","mouse","satellites","one","eat","nearest","present","decide","ring",
+        "seat","meal","later","orbit","wear","differ","rhyme","barn","member","audience",
+        "lead","week","guide","fruit","drive","form","faster","produce","highest","either",
+        "tired","section","lungs","forgotten","father","add","fastened","brush","visitor","class"
     ];
 
-    displaywords = (e) =>{
+    shuffledWords=this.shuffle(this.wordList).join(' ');
+
+    startTyping = (e) =>{
         e.preventDefault();
-        const shuffledWords=this.shuffle(this.wordList);
-        document.getElementById('typingTestHelpText').innerHTML = shuffledWords.join(' ');
+        document.getElementById('typingTestHelpText').innerHTML = '';
+        document.getElementById('textbutton').innerHTML = '';
+        this.refs.typeMan.setPractice(this.shuffledWords);
     }
 
-    startTyping = (e) => {
-        e.preventDefault();
-        
+    finishedTyping = (data) => {
+        if (data.correctLetters && data.incorrectLetters) {
+            console.log('typing is done, got', data.correctLetters.length, 'right,', data.incorrectLetters.length, 'wrong.');
+            console.log('you have an accuracy of', Math.round(data.correctLetters.length / (data.correctLetters.length + data.incorrectLetters.length) * 100) + '%');
+        }
     }
 
     render(){
@@ -50,18 +54,11 @@ class typingTest extends Component {
                     <h1>Timer starts when you start typing.</h1>
                 </div>
 
-                <div id='statsNthat'>
-                    <h2>WPM: 0 CPM: 0 Accuracy: 0%</h2>
-                </div>
-
-                <Timer />
-
-                <div id='inputBar'>
-                    <input placeholder='Begin typing' onClick={this.displaywords} onChange={this.startTyping}></input>
-                </div>
-
-                <div id='tempResultsButton'>
-                    <li><NavLink to="/results_screen">Skip to results</NavLink></li>
+                <div>
+                    <TypeManager ref="typeMan" finishedAction={this.finishedTyping} /> 
+                    <div id='textbutton'>
+                        <button onClick={this.startTyping}>Begin</button>
+                    </div>
                 </div>
                 
             </div>
