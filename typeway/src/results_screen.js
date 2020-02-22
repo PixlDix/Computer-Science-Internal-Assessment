@@ -11,7 +11,7 @@ class Results_screen extends Component {
         return(
             <div> 
                 <div>
-                    <li><NavLink to="/">Log Out</NavLink></li>
+                    <li><NavLink to="/signinform">Log In</NavLink></li>
                 </div>
     
                 <div>
@@ -23,13 +23,7 @@ class Results_screen extends Component {
                         Characters per minute: {totalLetters.history.location.state.totalLetters.length} <br />
                         Accuracy: {Math.round(correctLetters.history.location.state.correctLetters.length / (correctLetters.history.location.state.correctLetters.length + incorrectLetters.history.location.state.incorrectLetters.length) * 100) } % <br />
                     </h2>
-                    <h2>Average Words per minute: must be logged in for this feature <br />
-                        Average Characters per minute: must be logged in for this feature <br />
-                        Average Accuracy: must be logged in for this feature <br />
-                    </h2>
-                    <h2>Highest Words per minute: must be logged in for this feature <br />
-                        Highest Characters per minute: must be logged in for this feature
-                    </h2>
+                    <h2>Log in for more features</h2>
                 </div>
     
                 <div>

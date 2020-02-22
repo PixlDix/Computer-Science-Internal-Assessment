@@ -6,7 +6,7 @@ const options_screen = () => {
     return(
         <div> 
             <div>
-                <li><NavLink to="/">Log Out</NavLink></li>
+                <li><NavLink to="/signinform">Log In</NavLink></li>
             </div>
 
             <div>

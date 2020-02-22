@@ -47,7 +47,7 @@ class typingTest extends Component {
         return(
             <div>
                 <div id='logOutButton'>
-                    <li><NavLink to="/">Log Out</NavLink></li>
+                    <li><NavLink to="/signinform">Log In</NavLink></li>
                 </div>
                 
                 <div id='typingTestHelpText'>
