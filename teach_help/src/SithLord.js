@@ -10,7 +10,6 @@ class SithLord extends Component {
         this.props.deleteAction(this.props);
     }
     render() {
-        console.log(this.props);
         const { name, rank, skillLevel } = this.props;
         return(
             <li>{name} is a {rank} level Sith lord with lightsaber skill rating of {skillLevel} <button onClick={this.handleEdit}>Edit</button> <button onClick={this.handleDelete}>Remove</button></li>
