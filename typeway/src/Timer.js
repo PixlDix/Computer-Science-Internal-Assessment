@@ -23,13 +23,16 @@ class Timer extends Component {
     }
 
     componentDidMount(){
-        const { correctLetters, incorrectLetters, totalLetters, totalWords } = this.props;
         this.myInterval = setInterval(() => {
             if(this.state.count === 0) {
                 clearInterval(this.myInterval);
                 this.myInterval = null;
+                const { correctLetters, incorrectLetters, totalLetters, totalWords } = this.props;
                 this.setState({
-                    redirect: <Redirect to={{pathname: './Results_screen', correctLetters: correctLetters, incorrectLetters: incorrectLetters, totalLetters: totalLetters, totalWords: totalWords}} />
+                    redirect: <Redirect to={{
+                        pathname: './Results_screen',
+                        state: {correctLetters: correctLetters, incorrectLetters: incorrectLetters, totalLetters: totalLetters, totalWords: totalWords}
+                    }} />
                 });
             } else {
                 this.setState({

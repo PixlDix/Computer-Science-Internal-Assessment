@@ -4,8 +4,10 @@ import { NavLink } from "react-router-dom"
 
 class Results_screen extends Component {
     render(){
-        const { totalLetters } = this.props;
-        console.log(totalLetters)
+        const totalWords = this.props;
+        const totalLetters = this.props;
+        const correctLetters = this.props;
+        const incorrectLetters = this.props;
         return(
             <div> 
                 <div>
@@ -17,9 +19,9 @@ class Results_screen extends Component {
                 </div>
     
                 <div>
-                    <h2>Words per minute: 0 <br />
-                        Characters per minute: {totalLetters} <br />
-                        Accuracy: 0% <br />
+                    <h2>Words per minute: {totalWords.history.location.state.totalWords.length} <br />
+                        Characters per minute: {totalLetters.history.location.state.totalLetters.length} <br />
+                        Accuracy: {Math.round(correctLetters.history.location.state.correctLetters.length / (correctLetters.history.location.state.correctLetters.length + incorrectLetters.history.location.state.incorrectLetters.length) * 100) } % <br />
                     </h2>
                     <h2>Average Words per minute: must be logged in for this feature <br />
                         Average Characters per minute: must be logged in for this feature <br />
