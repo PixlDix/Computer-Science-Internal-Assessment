@@ -1,11 +1,10 @@
 import React, { Component } from "react";
-import './App.css';
-import Timer from './Timer'
-import Text from './Text'
-
+import './../App.css';
+import Timer from './Timer';
+import Text from './Text';
 
 class TypeManager extends Component{
-    
+
     state = {
         listening: false,
         currentPosition: 0,
@@ -60,13 +59,15 @@ class TypeManager extends Component{
                     if (currentPosition >= this.state.practiceText.length) {
                         listening = false;
                     }
+                    
+                    console.log(currentPosition)
                     this.setState({
                         currentPosition,
                         correctLetters,
                         incorrectLetters,
                         totalLetters,
                         totalWords,
-                        listening
+                        listening,
                     });
                     if (listening === false && this.props.finishedAction) {
                         this.props.finishedAction({ correctLetters, incorrectLetters });
@@ -78,27 +79,32 @@ class TypeManager extends Component{
 
     componentDidMount() {
         document.body.addEventListener('keyup', this.typeListener);
+        const { text } = this.props
+        this.setPractice(text)
     }
 
     componentWillUnmount() {
         document.body.removeEventListener('keyup', this.typeListener);
     }
 
-    render(){
+    render(){   
+        const wpm = this.state.totalWords.length; 
+        const cpm = this.state.totalLetters.length;
+        const accuracy = Math.round(this.state.correctLetters.length / (this.state.correctLetters.length + this.state.incorrectLetters.length) * 100)
         return(
             <div>
-
-                {this.state.showText === true && <Text text={this.state.practiceText} currentPosition={this.state.currentPosition} correctLetters={this.state.correctLetters} incorrectLetters={this.state.incorrectLetters}/>}
-
-                <div id='statsNthat'>
-                    <h1>WPM: { this.state.totalWords.length }  CPM: { this.state.totalLetters.length }  Accuracy: { Math.round(this.state.correctLetters.length / (this.state.correctLetters.length + this.state.incorrectLetters.length) * 100) } %</h1>
+                <div>
+                    <Text text={this.state.practiceText} currentPosition={this.state.currentPosition} correctLetters={this.state.correctLetters} incorrectLetters={this.state.incorrectLetters}/>
                 </div>
 
-                {this.state.startTimer === true && <Timer correctLetters={this.state.correctLetters} incorrectLetters={this.state.incorrectLetters} totalWords={this.state.totalWords} totalLetters={this.state.totalLetters}/>}
-
+                <div className='statContainer'>
+                    {this.state.startTimer === true && <Timer wpm={wpm} cpm={cpm} accuracy={accuracy} currentPosition={this.state.currentPosition} textLength={this.state.practiceText.length}/>}
+                    <h1 className='liveStats'>WPM: { wpm }  CPM: { cpm }  Accuracy: { accuracy }%</h1>
+                </div>
             </div>
         );
     }
 }
+
 
 export default TypeManager;

@@ -1,10 +1,10 @@
 import React from 'react';
-import './App.css';
+import './../App.css';
 import { NavLink } from 'react-router-dom';
 
 const login_screen = () => {  
     return(
-        <div id="parent">
+        <div>
             <div>
                 <h1 id="welcomeText">
                     Welcome to:

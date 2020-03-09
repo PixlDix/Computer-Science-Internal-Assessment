@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import './App.css';
-import login_screen from './login_screen';
-import options_screen from './options_screen';
-import typingTest from './typingTest';
-import Results_screen from './Results_screen';
-import signinform from './signinform';
-import signupform from './signupform';
-import Timer from './Timer';
+import login_screen from './components/login_screen';
+import options_screen from './components/options_screen';
+import typingTest from './components/typingTest';
+import Results_screen from './components/Results_screen';
+import signinform from './components/signinform';
+import signupform from './components/signupform';
+import Timer from './components/Timer';
 import { BrowserRouter, Route } from 'react-router-dom';
+
 
 class App extends Component {  
   render() {

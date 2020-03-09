@@ -1,10 +1,10 @@
 import React, { Component } from "react";
-import './App.css';
+import './../App.css';
 import { Redirect } from "react-router-dom";
 
 class Timer extends Component {
     state={
-        count: 10,
+        count: 200000,
         redirect: null
     }
 
@@ -13,8 +13,8 @@ class Timer extends Component {
     render() {
         return(
             <div>
-                <div id='statsNthat'>
-                    <h3>Time left: {this.state.count}</h3>
+                <div>
+                    <h1 className='timer'>Time left: {this.state.count}</h1>
                 </div>
                 
                 {this.state.redirect}
@@ -24,14 +24,14 @@ class Timer extends Component {
 
     componentDidMount(){
         this.myInterval = setInterval(() => {
-            if(this.state.count === 0) {
+            if(this.state.count === 0 || this.props.currentPosition === this.props.textLength) {
                 clearInterval(this.myInterval);
                 this.myInterval = null;
-                const { correctLetters, incorrectLetters, totalLetters, totalWords } = this.props;
+                const { wpm, cpm, accuracy } = this.props;
                 this.setState({
                     redirect: <Redirect to={{
                         pathname: './Results_screen',
-                        state: {correctLetters: correctLetters, incorrectLetters: incorrectLetters, totalLetters: totalLetters, totalWords: totalWords}
+                        state: {wpm: wpm, cpm: cpm, accuracy: accuracy}
                     }} />
                 });
             } else {

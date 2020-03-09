@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import './App.css';
+import './../App.css';
 import Letter from './Letter'
 
 class Text extends Component {
@@ -10,7 +10,7 @@ class Text extends Component {
 
     render(){
         const { text, currentPosition, correctLetters, incorrectLetters } = this.props;
-        const currentPositionAsNumber = parseInt(currentPosition);
+        // const currentPositionAsNumber = parseInt(currentPosition);
         const textToLetters = text.split('');
         const textItems = [];
         for(let i = 0; i < textToLetters.length; i++) {
@@ -23,7 +23,7 @@ class Text extends Component {
             }
             const itemProps = {
                 letter: textToLetters[i],
-                active: (i === currentPositionAsNumber),
+                active: (i === currentPosition),
                 correct: isCorrect
             };
             const itemKey = 'TC' + i.toString();
@@ -31,7 +31,7 @@ class Text extends Component {
         }
         return(
             <div>
-                <div id='typingTestHelpText'> 
+                <div className='typingTestText'> 
                     {textItems}
                 </div>
             </div>

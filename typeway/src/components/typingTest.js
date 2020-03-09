@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import './App.css'
-import { NavLink } from "react-router-dom";
+import './../App.css'
+import NavBar from './NavBar'
 import TypeManager from './TypeManager';
 
 class typingTest extends Component {
@@ -29,35 +29,31 @@ class typingTest extends Component {
 
     shuffledWords=this.shuffle(this.wordList).join(' ');
 
+    state={
+        showText: false
+    }
+
     startTyping = (e) =>{
         e.preventDefault();
         document.getElementById('typingTestHelpText').innerHTML = '';
         document.getElementById('textbutton').innerHTML = '';
-        this.refs.typeMan.setPractice(this.shuffledWords);
-    }
-
-    finishedTyping = (data) => {
-        if (data.correctLetters && data.incorrectLetters) {
-            console.log('typing is done, got', data.correctLetters.length, 'right,', data.incorrectLetters.length, 'wrong.');
-            console.log('you have an accuracy of', Math.round(data.correctLetters.length / (data.correctLetters.length + data.incorrectLetters.length) * 100) + '%');
-        }
+        this.setState({showText: true});
     }
 
     render(){
         return(
             <div>
-                <div id='logOutButton'>
-                    <li><NavLink to="/signinform">Log In</NavLink></li>
-                </div>
+                <NavBar />
                 
                 <div id='typingTestHelpText'>
-                    <h1>Timer starts when you start typing.</h1>
+                    <h1 className='typingTestHelpText'>Timer starts when you press begin</h1>
                 </div>
 
-                <div>
-                    <TypeManager ref="typeMan" finishedAction={this.finishedTyping} /> 
-                    <div id='textbutton'>
-                        <button onClick={this.startTyping}>Begin</button>
+                {this.state.showText === true && <TypeManager text={this.shuffledWords}/>}
+
+                <div> 
+                    <div id='textbutton' >
+                        <button className='textbutton' onClick={this.startTyping}>Begin</button>
                     </div>
                 </div>
                 
