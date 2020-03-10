@@ -4,7 +4,7 @@ import { Redirect } from "react-router-dom";
 
 class Timer extends Component {
     state={
-        count: 60000,
+        count: 60,
         redirect: null
     }
 

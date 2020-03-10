@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import correct from '../audio/correct.mp3';
+import incorrect from '../audio/incorrect.mp3';
 import './../App.css';
 import Timer from './Timer';
 import Text from './Text';
@@ -35,6 +37,10 @@ class TypeManager extends Component{
         this.state.setState({ listening: true });
         this.state.setState({ startTimer: true });
     }
+
+    correctBeep = new Audio (correct)
+    incorrectBeep = new Audio (incorrect)
+
     typeListener = (event) => {
         if (this.state.listening) {
             if (event.key) {
@@ -51,9 +57,11 @@ class TypeManager extends Component{
                     if (event.key === this.state.practiceText[this.state.currentPosition]) {
                         correctLetters.push(this.state.currentPosition);
                         totalLetters.push(this.state.currentPosition);
+                        this.correctBeep.play();
                     } else {
                         incorrectLetters.push(this.state.currentPosition);
                         totalLetters.push(this.state.currentPosition)
+                        this.incorrectBeep.play();
                     }
                     const currentPosition = 0;
                     if (currentPosition >= this.state.practiceText.length) {
