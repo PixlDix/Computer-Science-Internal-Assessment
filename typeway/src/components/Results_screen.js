@@ -11,11 +11,11 @@ class Results_screen extends Component {
         const assessSpeed = (cpm) => {
             if(cpm>=0 && cpm<=49) {
                 return 'You type at a very slow speed';
-            } else if (cpm>=50 && cpm<=174) {
+            } else if (cpm>=50 && cpm<=149) {
                 return 'You type at a slow speed';
-            } else if (cpm>=175 && cpm<=224) {
+            } else if (cpm>=150 && cpm<=249) {
                 return 'You type at an average speed';
-            } else if (cpm>=225 && cpm<=249) {
+            } else if (cpm>=250 && cpm<=349) {
                 return 'You type at a fast speed';
             } else {
                 return 'You type at a very fast speed';

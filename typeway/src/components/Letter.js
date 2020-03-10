@@ -12,8 +12,9 @@ class Letter extends Component{
         }
         else if (this.props.correct === false) {
             classn = 'incorrect';
+
         } 
-        const character = this.props.letter;
+        const character = (this.props.letter === ' ') ? '•' : this.props.letter;
         return(
             <span className={classn}>{character}</span>
         );

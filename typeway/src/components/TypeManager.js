@@ -55,12 +55,11 @@ class TypeManager extends Component{
                         incorrectLetters.push(this.state.currentPosition);
                         totalLetters.push(this.state.currentPosition)
                     }
-                    const currentPosition = this.state.currentPosition + 1;
+                    const currentPosition = 0;
                     if (currentPosition >= this.state.practiceText.length) {
                         listening = false;
                     }
-                    
-                    console.log(currentPosition)
+
                     this.setState({
                         currentPosition,
                         correctLetters,
@@ -68,6 +67,7 @@ class TypeManager extends Component{
                         totalLetters,
                         totalWords,
                         listening,
+                        practiceText: this.state.practiceText.substring(1, this.state.practiceText.length)
                     });
                     if (listening === false && this.props.finishedAction) {
                         this.props.finishedAction({ correctLetters, incorrectLetters });
