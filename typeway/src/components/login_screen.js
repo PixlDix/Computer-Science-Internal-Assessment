@@ -6,21 +6,18 @@ const login_screen = () => {
     return(
         <div>
             <div>
-                <h1 id="welcomeText">
-                    Welcome to:
+                <h1 className="welcomeText">
+                    Welcome to
                 </h1>
-                <h1 id="loginText">
+                <h1 className="loginText">
                     TypeWay
                 </h1>
             </div>
 
-            <div id="buttons">
-                <div id="logIn">
-                    <li className="logInScreenButton"><NavLink to="/signinform">Log in/Sign Up</NavLink></li>
-                </div>
-
-                <div id="guest">
-                    <li className="logInScreenButton"><NavLink to="/options_screen">Continue as guest</NavLink></li>
+            <div>
+                <div>
+                    <NavLink className="logInScreenButtons" to="/signinform">Log in/Sign Up</NavLink><br/>
+                    <NavLink className="logInScreenButtons" to="/options_screen">Continue as guest</NavLink>
                 </div>
             </div>
         </div>

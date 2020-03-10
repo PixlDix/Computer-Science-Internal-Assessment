@@ -35,13 +35,13 @@ class signinform extends Component {
                         <h1 className='authText'>Log In</h1>
                     </div>
 
-                    <p>Email:</p>
+                    <p className='authhelp'>Email:</p>
 
                     <div>
                         <input id='email' type='email' placeholder='Email' onChange={this.logContents} className='authbox'></input>
                     </div>
 
-                    <p>Password:</p>
+                    <p className='authhelp'>Password:</p>
 
                     <div>
                         <input id='password' type='password' placeholder='Password' onChange={this.logContents} className='authbox'></input>

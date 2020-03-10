@@ -31,7 +31,7 @@ class Text extends Component {
             textItems.push(<Letter { ...itemProps } key={itemKey} />);
         }
         return(
-            <div>
+            <div className='typingTestTextContainer'>
                 <div className='typingTestText'> 
                     {textItems}
                 </div>

@@ -9,11 +9,11 @@ const options_screen = () => {
             <NavBar />
             
             <div>
-                <h1 id='optionsText'>Please select what you would like to do.</h1>
+                <h1 className='optionsText'>Please select what you would like to do.</h1>
             </div>
 
-            <div id='typingTestButton'>
-                <li className="optionScreenButton"><NavLink to="/typingTest">Typing Test</NavLink></li>
+            <div>
+                <NavLink className="optionScreenButton" to="/typingTest">Typing Test</NavLink>
             </div>
         </div>
     );
