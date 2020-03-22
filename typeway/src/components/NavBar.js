@@ -7,8 +7,9 @@ const NavBar = () => {
         <nav className='navbar'>
             <div>
                 <Link to='/' className='brand-logo'>Typeway</Link>
-                <Link to='/signinform' className='authBtn'>Log in</Link>
-                <Link to='/signupform' className='authBtn'>Sign up</Link>
+                <Link to='/signinform' className='authBtn'>Log In</Link>
+                <Link to='/signupform' className='authBtn'>Sign Up</Link>
+                <Link to='/options_screen' className='authBtn'>Options</Link>
             </div>
         </nav> 
     )

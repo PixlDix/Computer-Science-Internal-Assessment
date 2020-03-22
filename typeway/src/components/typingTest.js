@@ -24,7 +24,7 @@ class typingTest extends Component {
         "forget","walk","mouse","satellites","one","eat","nearest","present","decide","ring",
         "seat","meal","later","orbit","wear","differ","rhyme","barn","member","audience",
         "lead","week","guide","fruit","drive","form","faster","produce","highest","either",
-        "tired","section","lungs","forgotten","father","add","fastened","brush","visitor","class"
+        "tired","section","lungs", "respect", "brother", "crisp" 
     ];
 
     shuffledWords=this.shuffle(this.wordList).join(' ');

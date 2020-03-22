@@ -48,7 +48,7 @@ class signupform extends Component {
                     </div>
 
                     <div>
-                        <button onClick={this.logIn} className='authbutton'>Create Account</button>
+                        <button onClick={this.signUp} className='authbutton'>Create Account</button>
                     </div>
                 </div>
             </div>
